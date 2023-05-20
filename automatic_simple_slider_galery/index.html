@@ -1,0 +1,78 @@
+<style>
+  .slider {
+      overflow: hidden;
+  }
+  .slides {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      width: 400%; /* esto se modifica con relacion a el numero de sliders */
+
+      animation: slide 20s infinite;
+      animation-direction: alternate;
+  }
+  .slider li {
+      list-style: none;
+      width: 100%;
+  }
+  .slider .responsive {
+      width: 100%;
+      height: auto;
+  }
+  /* Esto se  modifica con relacion al numero de sliders */
+  @keyframes slide {
+      0% { margin-left: 0; }
+      30% { margin-left: 0; }
+
+      40% { margin-left: -100%; }
+      60% { margin-left: -100%; }
+      
+
+      80% { margin-left: -200%; }
+      100% { margin-left: -200%; }
+  }
+  .slides:hover {
+      /*animation-play-state: paused; */
+  }
+  .parrafoSlide{
+      color: black;
+      font-family: "Helvetica", Sans-serif;
+      font-weight: 300;
+      margin-bottom: 30px;
+      font-size: 35px;
+  }
+  .textNone {
+      text-decoration: none;
+  }
+  .bann {
+      position: relative;
+  }
+  .bt{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+  }
+  .btnslide {
+      border-width: 0px;
+      border-radius: 0px;
+      color: #FFFFFF;
+      background-color: #127749;
+      border-color: #127749;
+      padding: 12px 24px;
+      font-size: 15px;
+      cursor: pointer;
+  }
+</style>
+  <div class="slider">
+      <ul class="slides">
+          <li><a href="#"><img src="https://ultrafemme.com/wp-content/uploads/2022/08/2000x700-AA71.png" alt="" class="responsive" width="1500" height="600"></a></li>
+          <li><a href="#"><img src="https://ultrafemme.com/wp-content/uploads/2022/08/2000x700-AA.png" alt="" class="responsive" width="1500" height="600"></a></li> 
+          <li><a href="#"><img src="https://ultrafemme.com/wp-content/uploads/2022/07/2000X700.png" alt="" class="responsive" width="1500" height="600"></a></li> 
+           <li><a href="#"><img src="https://ultrafemme.com/wp-content/uploads/2022/07/2000X700.png" alt="" class="responsive" width="1500" height="600"></a></li>
+
+      </ul>
+  </div>

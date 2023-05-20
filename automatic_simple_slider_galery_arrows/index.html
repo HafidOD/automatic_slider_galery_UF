@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider</title>
+</head>
+
+<body>
+  <!-- <style>
+    .slider {
+      overflow: hidden;
+    }
+
+    .slides {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      width: 400%;
+
+      animation: slide 20s infinite;
+      animation-direction: alternate;
+    }
+
+    .slider li {
+      list-style: none;
+      width: 100%;
+    }
+
+    .slider .responsive {
+      width: 100%;
+      height: auto;
+    }
+
+    @keyframes slide {
+      0% {
+        margin-left: 0;
+      }
+
+      20% {
+        margin-left: 0;
+      }
+
+      30% {
+        margin-left: -100%;
+      }
+
+      50% {
+        margin-left: -100%;
+      }
+
+      60% {
+        margin-left: -200%;
+      }
+
+      75% {
+        margin-left: -200%;
+      }
+
+      80% {
+        margin-left: -300%;
+      }
+
+      100% {
+        margin-left: -300%;
+      }
+    }
+
+    .slides:hover {
+      /*animation-play-state: paused; */
+    }
+
+    .parrafoSlide {
+      color: black;
+      font-family: "Helvetica", Sans-serif;
+      font-weight: 300;
+      margin-bottom: 30px;
+      font-size: 35px;
+    }
+
+    .textNone {
+      text-decoration: none;
+    }
+
+    .bann {
+      position: relative;
+    }
+
+    .bt {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .btnslide {
+      border-width: 0px;
+      border-radius: 0px;
+      color: #FFFFFF;
+      background-color: #127749;
+      border-color: #127749;
+      padding: 12px 24px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style> -->
+  <style>
+    .container-slider {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .sliders {
+      width: 400%;
+      display: flex;
+      margin-left: -100%;
+    }
+    .responsive {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .slider-btn {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: rgba(0, 0, 0, 0.1);
+      color: white;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      font-size: 30px;
+      font-weight: bold;
+      font-family: monospace;
+      text-align: center;
+      /* color: #FFFFFF;       */
+      /* padding: 12px 24px; */
+      cursor: pointer;  
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 1s;
+    }
+    .slider-btn:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .slider-btn-left {
+      left: 2%;
+    }
+    .slider-btn-right {
+      right: 2%;
+    }
+    /* .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 10%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    } */
+  </style>
+
+    <div class="container-slider">
+      <div class="sliders" id="slider">
+        <div class="slider-section">
+          <a href="#">
+            <img src="https://ultrafemme.com/wp-content/uploads/2022/08/2000x700-AA71.png" alt="" class="responsive"
+            >
+          </a>
+        </div>
+        <div class="slider-section">
+          <a href="#">
+            <img src="https://ultrafemme.com/wp-content/uploads/2022/08/2000x700-AA.png" alt="" class="responsive"
+            >
+          </a>
+        </div>
+        <div class="slider-section">
+          <a href="#">
+            <img src="https://ultrafemme.com/wp-content/uploads/2022/07/2000X700.png" alt="" class="responsive"
+            >
+          </a>
+        </div>
+        <div class="slider-section">
+          <a href="#">
+            <img src="https://ultrafemme.com/wp-content/uploads/2022/07/2000X700.png" alt="" class="responsive"
+            >
+          </a>
+        </div>
+      </div>
+      <div class="slider-btn slider-btn-right" id="btn-right">&#62;</div>
+        <!-- <i aria-hidden="true" class="eicon-chevron-left"></i> -->
+      <div class="slider-btn slider-btn-left" id="btn-left">&#60;</div>
+    </div>
+    
+    <script>
+      const slider = document.querySelector("#slider");
+      let sliderSection = document.querySelectorAll(".slider-section");
+      let sliderSectionLast = sliderSection[sliderSection.length -1];
+
+      const btnRight = document.querySelector("#btn-right");
+      const btnLeft = document.querySelector("#btn-left");
+
+      slider.insertAdjacentElement('afterbegin', sliderSectionLast);
+
+      function Next() {
+        let sliderSectionFirst = document.querySelectorAll(".slider-section")[0];
+        slider.style.marginLeft = "-200%";
+        slider.style.transition = "all 1s";
+        setTimeout(function(){
+          slider.style.transition= "none";
+          slider.insertAdjacentElement('beforeend', sliderSectionFirst);
+          slider.style.marginLeft = "-100%";
+        },500);
+      }
+      function Prev() {
+        let sliderSection = document.querySelectorAll(".slider-section");
+        let sliderSectionLast = sliderSection[sliderSection.length -1];
+        slider.style.marginLeft = "0";
+        slider.style.transition = "all 1s";
+        setTimeout(function(){
+          slider.style.transition= "none";
+          slider.insertAdjacentElement('afterbegin', sliderSectionLast);
+          slider.style.marginLeft = "-100%";
+        },500);
+      }
+      btnRight.addEventListener('click', function(){
+        Next();
+      });
+      btnLeft.addEventListener('click', function(){
+        Prev();
+      });
+      setInterval(function(){
+        Next();
+      },7000);
+    </script>
+</body>
+
+</html>
